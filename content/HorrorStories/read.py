@@ -36,7 +36,7 @@ def main():
             WaitForInput()
             command = inputqueue.pop(0)
             # f: move forward a story
-            if( command == 'f' ):
+            if( command == 'f' or command == '' ):
                 # Don't want to show a story that doesn't exist
                 if( CurrentStory < len(stories) ):
                     CurrentStory += 1
