@@ -10,8 +10,8 @@ I've had a Raspberry Pi 1 running as a pihole (DNS server that has blocklists of
 Since it did so well as an always-on home server of sorts, I decided to fully turn it into a server that will run for pennies a month.
 
 I thought about what I wanted it to do, and decided on these requirements:
-1. Act as a network attached storage. It won't be the fastest, but it would allow me to move things between devices or to be accessible from all devices. 
-2. Act as a download control server for regular downloads, youtube downloads (cursed Canadian internet often buffers), and torrent downloads (it's about time I seed my Ubuntu/Raspbian/CentOS ISOs)
+1. Act as a network attached storage. It won't be the fastest, but it would allow me to move things between devices or to be accessible from all devices. The main advantage is being able to upload and download files without having to get them on Dropbox/Drive/OneDrive/MEGA.
+2. Act as a download control server for regular downloads, youtube downloads (cursed Canadian internet often buffers), and torrent downloads (it's about time I seed my Ubuntu/Raspbian/CentOS ISOs 24/7)
 3. Provide the capability to have my own web server and mail server
 4. Provide internet SSH access in a hardened way that won't get pwned by automated brute forcers, script kiddies, or elite international hackers of mystery
 
