@@ -10,6 +10,7 @@ One of the regular parts of Canadian life is getting cheated by your telecoms co
 I (quickly found out)[http://xmodulo.com/check-internet-speed-command-line-linux.html] that a tool called speedtest-cli allows a speedtest to be run from the command line. By running this (*periodically*) from a cronjob, you can easily run regular speed tests. I figured out a decent one liner for the task:
 
     speedtest-cli > /home/magrat/SpeedTestResults/"speedtest $(date --rfc-3339='seconds')"
+
 or, if you want to see the results as it runs (for testing):
 
     speedtest-cli | tee /home/magrat/SpeedTestResults/"speedtest $(date --rfc-3339='seconds')"
@@ -19,4 +20,4 @@ To run the command bihourly I put an entry into the crontab:
 
     47 */2 * * * speedtest-cli > /home/magrat/SpeedTestResults/"speedtest $(date --rfc-3339='seconds')"
 
-The only thing left to do is build a Python script to compile all the speedtests into a nice CSV
+The only thing left to do is build a Python/Bash script to compile all the speedtests into a nice CSV
