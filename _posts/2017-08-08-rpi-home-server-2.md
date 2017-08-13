@@ -93,6 +93,7 @@ To compile the results into a nice CSV I wrote a simple Python script:
 
 
 Which outputs a nice CSV like this (sample):
+
     Datetime	Down (Mbits/s)	Up (Mbits/s)
     2017-08-08 16:47:01-04:00	29.47	6.97
     2017-08-08 17:47:01-04:00	30.23	7.06
