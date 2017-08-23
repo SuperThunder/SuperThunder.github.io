@@ -27,3 +27,5 @@ Making the environment:
 2. Ensure the raspberry pi is running, connected, and sshd is running.
 3. Login to the Pi with SSH from your external device. Mount the desktop's filesystem: `sshfs desktopuser@<desktopip>:/ ./<mountpoint on your Pi> -p 22`
 4. Mount the Pi's filesystem on your external device: `sshfs piuser@<ExternalRouterIP> ./<mountpoint on your device> -p <PortNumber>`
+
+
