@@ -10,6 +10,7 @@ Specifically, I can now turn my desktop on in the morning and access it from any
 The file paths will look a bit silly though, such as:
 
     /home/atlaslaptop/Documents/RPiMount/home/atlasRPi/DesktopMount/home/atlasdesktop/Documents/Projects/
+
 (atlas is the example user in this case)
 
 Speeds with this double SSHFS were not spectacular. Moving a lot of small files, the overhead caused a transfer rate of 700 BYTES per second. Sending single large files (or archives of small files) can get to a more reasonable 1 MB/s.

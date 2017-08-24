@@ -4,7 +4,7 @@ title: "RPi Home Server Part 2"
 date: 2017-08-08
 ---
 
-# Miscellaneous Additions while Transmission is Broken
+### Miscellaneous Additions while Transmission is Broken
 ## Adding a regular speedtest
 I often find the speed I get downloading from high-speed (ie, much better than my internet) sources is far below what my telecom promises they give me (_ahem_ *Bell Canada*). As the RPi is on 24/7 I realized I could use it to make regular speed tests.
 I [quickly found out](http://xmodulo.com/check-internet-speed-command-line-linux.html) that a tool called speedtest-cli allows a speedtest to be run from the command line. By running this (*periodically*) from a cronjob, you can easily run regular speed tests. I figured out a decent one liner for the task:
