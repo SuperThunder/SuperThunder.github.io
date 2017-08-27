@@ -30,4 +30,4 @@ Instead of using the DLink router as another gateway creating another network, I
 
 
 ### Notes
-I found out this (is called cascading)[https://www.linksys.com/ca/support-article?articleNum=132275]
+I found out this [is called cascading](https://www.linksys.com/ca/support-article?articleNum=132275) for wired connections and bridging for wireless connections. 
