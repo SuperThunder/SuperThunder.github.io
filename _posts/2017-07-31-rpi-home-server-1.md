@@ -30,3 +30,12 @@ Not wanting to get bogged down, I moved on to setting up the torrent software. S
 
 My guess is that the issue lies somewhere between IPTables, the configuration of nginx, and the application daemons. None of the guides mentioned needing to fiddle with IPTables or nginx, and I made sure to properly configure the applications. As a last resort I fully removed Deluge, Transmission, MoinMoin, and nginx to make ready for a second attempt at setting up a torrent interface and personal wiki.
 
+
+## Notes:
+
+Here are some useful links that I used:
+
+https://www.pestmeester.nl/index.html
+
+http://kamilslab.com/2016/12/11/how-to-install-fail2ban-on-the-raspberry-pi/
+

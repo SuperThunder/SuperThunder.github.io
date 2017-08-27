@@ -27,7 +27,7 @@ Instead of using the DLink router as another gateway creating another network, I
 
 
 ### Too Long Diagram Read
-![[https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/RoutingDiagram.png]]
+![https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/RoutingDiagram.png]
 
 ### Notes
 I found out this [is called cascading](https://www.linksys.com/ca/support-article?articleNum=132275) for wired connections and bridging for wireless connections. 
