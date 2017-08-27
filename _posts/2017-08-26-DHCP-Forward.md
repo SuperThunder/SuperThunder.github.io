@@ -13,9 +13,9 @@ So, enter all the home servers I want to experiment with. A mix of Raspberry Pis
 The issue is, the way things work when you just keep plugging routers into each other is that each new router is another network NAT'ed from the previous in which devices from previous networks are isolated from devices on the next level of network 'down'. None of the servers on the DLink router can be SSH'ed or browsed to by all the regular devices on the TPLink router!
 
 ### The Solution
-I could have just port forwarded like crazy for everything I needed on the DLink. A port forward for SSH to every server, a port forward for every webserver, a port forward for every media/file/torrent. However, there is a better way. 
+I could have just port forwarded like crazy for everything I needed on the DLink. A port forward for SSH to every server, a port forward for every webserver, a port forward for every media/file/torrent server. However, there is a better way. 
 Instead of using the DLink router as another gateway creating another network, I changed it to add to the Archer C7 network (after some false starts and physical config resets)
-1. Plug an ethernet cable into the main router (Archer C7) LAN and secondary router (DLink) LAN (not WAN!)
+1. Plug an ethernet cable into the main router (Archer C7) LAN and secondary router (DLink) LAN (not WAN! If we use WAN it becomes more difficult to join the two networks)
 2. Get the MAC of the secondary router and reserve a static address for it in the DHCP of the main router. 
 - I gave 192.168.0.2 to the DLink on the recommendation of a guide; I am still unsure whether it has significance as the second lowest IP address in the range.
 3. Set the secondary router so that it is not giving out IP addresses and tells clients to get their IP addresses from the main router.
@@ -27,3 +27,7 @@ Instead of using the DLink router as another gateway creating another network, I
 
 
 ### Too Long Diagram Read
+
+
+### Notes
+I found out this (is called cascading)[https://www.linksys.com/ca/support-article?articleNum=132275]
