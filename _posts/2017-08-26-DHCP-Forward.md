@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ISP modem/router to TPLINK router to DLINK router _with only double NAT instead of triple NAT_"
-date: 2017-08-23
+date: 2017-08-26
 ---
 ### What on earth? Triple NAT?
 The setup here is that my ISP provides a modem/router combination. It has poor wireless performance so it has wifi disabled and one of its LAN ports is plugged into the WAN port of a TPLink Archer C7. This means the ISP router's 192.168.2.100+ IP space is empty except for the Archer C7. The Archer C7's IP space of 192.168.0.100+ has all wireless devices. It also has devices connected to LAN ports; the home servers. As it stands we have the ISP router NATting to 192.168.2.100+ and then one IP in that range (the Archer C7) NATting to 192.168.0.100+, double NAT.
