@@ -16,13 +16,16 @@ I pointed the SAMBA share at the /home/vpn/Download folder used to store the tor
 
 Trying to get samba running with systemctl resulted in various errors about missing runlevels or masks. `sudo systemctl enable smbd.service nmbd.service` seems to have worked as the share is accessible, and the smbd process is running.
 
-After getting this all setup I changed the samba and transmission config files to point at a portable hard drive instead of a location on the very small SD card.
+After getting this all setup I changed the samba and transmission config files to point at a portable hard drive instead of a location on the very small SD card. 
+
+The transfer speeds were not bad for samba on a wired raspberry pi to a wifi-connected device (4 MB/s).
 
 ### Fighting with automount
 The major changes I had to make in /etc/usbmount/usbmount.conf were:
 - `FILESYSTEMS="vfat ntfs fuseblk ext2 ext3 ext4 hfsplus"`
 - `FS_MOUNTOPTIONS="-fstype=vfat,uid=1001,gid=46,dmask=0002,fmask=0002, -fstype=ntfs-3g,uid=1001,gid=46,dmask=0002,fmask=0002, -fstype=fuseblk,uid=1001,dmask=0002,fmask=0002"`
 - Note the commas after the last options entry for each fstype in FS_MOUNTOPTIONS. usbmount will silently fail to mount the disks (all of them) without this format being followed. The vfat disks mounted as 1001:46 but the NTFS disk mounted as 0:0 (root). Despite this, I was able to go in as a normal user and create/delete/change files.
+- Strangely, when the disks didn't mount usbmount made a symlink in /var/run/usbmount out of the disk labels. When they did mount usbmount did not make these symlinks.
 
 ### Aside
 The issues I was having with Transmission's website not showing up for LAN-connected computers seems to have resolved itself by redoing everything from scratch on a RPi3 _except_ install MoinMoin. My best guess is that nginx was assuming every incoming connection was for it but then discarding them when it didn't find a website bound to that port.
