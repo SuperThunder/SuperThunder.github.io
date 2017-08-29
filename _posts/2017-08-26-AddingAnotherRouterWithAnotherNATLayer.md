@@ -27,7 +27,7 @@ Instead of using the DLink router as another gateway creating another network, I
 
 
 ### Too Long Diagram Read
-![Home Network](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/HomeNetwork/RoutingDiagram.png "Diagram")
+![Home Network](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/HomeNetwork/RoutingDiagram.png "Home Network 192.168.2.1->192.168.0.1")
 
 ### Notes
 I found out this [is called cascading](https://www.linksys.com/ca/support-article?articleNum=132275) for wired connections and bridging for wireless connections. 
