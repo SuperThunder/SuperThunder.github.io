@@ -24,6 +24,6 @@ The issues I was having with Transmission's website not showing up for LAN-conne
 ### Notes
 This guide [on VPN split tunneling](https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubuntu-16-04/ "VPN Split Tunnel") was easy to follow and worked very well. It even has specific directions for whether you're using Ubuntu, Debian, or Raspbian. (Part 2)[https://www.htpcguides.com/configure-transmission-for-vpn-split-tunneling-ubuntu-16-04-debian-8/] sets up the reverse proxy so that Transmission's web interface can be accesed even while all Transmission traffic is going through the VPN.
 
-(A really old school guide to BitTorrent)[http://lifehacker.com/285489/a-beginners-guide-to-bittorrent]
+A [really old school guide to BitTorrent](http://lifehacker.com/285489/a-beginners-guide-to-bittorrent)
 
-(SAMBA guide from magpi)[https://www.raspberrypi.org/magpi/samba-file-server/]
+SAMBA [guide from magpi](https://www.raspberrypi.org/magpi/samba-file-server/)
