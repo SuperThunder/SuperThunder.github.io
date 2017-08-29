@@ -27,6 +27,11 @@ The major changes I had to make in /etc/usbmount/usbmount.conf were:
 - Note the commas after the last options entry for each fstype in FS_MOUNTOPTIONS. usbmount will silently fail to mount the disks (all of them) without this format being followed. The vfat disks mounted as 1001:46 but the NTFS disk mounted as 0:0 (root). Despite this, I was able to go in as a normal user and create/delete/change files.
 - Strangely, when the disks didn't mount usbmount made a symlink in /var/run/usbmount out of the disk labels. When they did mount usbmount did not make these symlinks.
 
+### 100% CPU/IO usage on NTFS mount with Transmission
+- [As described here](https://raspberrypi.stackexchange.com/questions/38437/mount-ntfs-using-99-of-my-cpu-with-transmission]
+- It seems a bunch of factors (Linux NTFS drivers, the way Transmission works, the relative low power of the RPi) mean that using an NTFS hard drive will have huge CPU usage due to many small writes being done
+- A good solution can be to enable the incomplete-dir feature of Transmission in which it will store unfinished torrents in a different directory than finished ones. The external hard drive could have a 30-50GB ext4 partition created.
+
 ### Aside
 The issues I was having with Transmission's website not showing up for LAN-connected computers seems to have resolved itself by redoing everything from scratch on a RPi3 _except_ install MoinMoin. My best guess is that nginx was assuming every incoming connection was for it but then discarding them when it didn't find a website bound to that port.
 
