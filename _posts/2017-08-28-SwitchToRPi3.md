@@ -28,7 +28,7 @@ The major changes I had to make in /etc/usbmount/usbmount.conf were:
 - Strangely, when the disks didn't mount usbmount made a symlink in /var/run/usbmount out of the disk labels. When they did mount usbmount did not make these symlinks.
 
 ### 100% CPU/IO usage on NTFS mount with Transmission
-- [As described here](https://raspberrypi.stackexchange.com/questions/38437/mount-ntfs-using-99-of-my-cpu-with-transmission]
+- [As described here](https://raspberrypi.stackexchange.com/questions/38437/mount-ntfs-using-99-of-my-cpu-with-transmission)
 - It seems a bunch of factors (Linux NTFS drivers, the way Transmission works, the relative low power of the RPi) mean that using an NTFS hard drive will have huge CPU usage due to many small writes being done
 - A good solution can be to enable the incomplete-dir feature of Transmission in which it will store unfinished torrents in a different directory than finished ones. The external hard drive could have a 30-50GB ext4 partition created.
 
