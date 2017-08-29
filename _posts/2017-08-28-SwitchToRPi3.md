@@ -18,6 +18,12 @@ Trying to get samba running with systemctl resulted in various errors about miss
 
 After getting this all setup I changed the samba and transmission config files to point at a portable hard drive instead of a location on the very small SD card.
 
+### Fighting with automount
+The major changes I had to make in /etc/usbmount/usbmount.conf were:
+- `FILESYSTEMS="vfat ntfs fuseblk ext2 ext3 ext4 hfsplus"`
+- `FS_MOUNTOPTIONS="-fstype=vfat,uid=1001,gid=46,dmask=0002,fmask=0002, -fstype=ntfs-3g,uid=1001,gid=46,dmask=0002,fmask=0002, -fstype=fuseblk,uid=1001,dmask=0002,fmask=0002"`
+- Note the commas after the last options entry for each fstype in FS_MOUNTOPTIONS. usbmount will silently fail to mount the disks (all of them) without this format being followed. The vfat disks mounted as 1001:46 but the NTFS disk mounted as 0:0 (root). Despite this, I was able to go in as a normal user and create/delete/change files.
+
 ### Aside
 The issues I was having with Transmission's website not showing up for LAN-connected computers seems to have resolved itself by redoing everything from scratch on a RPi3 _except_ install MoinMoin. My best guess is that nginx was assuming every incoming connection was for it but then discarding them when it didn't find a website bound to that port.
 
@@ -27,3 +33,5 @@ This guide [on VPN split tunneling](https://www.htpcguides.com/force-torrent-tra
 A [really old school guide to BitTorrent](http://lifehacker.com/285489/a-beginners-guide-to-bittorrent)
 
 SAMBA [guide from magpi](https://www.raspberrypi.org/magpi/samba-file-server/)
+
+Making [usbmount play nicely](https://raspberrypi.stackexchange.com/questions/41959/automount-various-usb-stick-file-systems-on-jessie-lite)
