@@ -3,6 +3,7 @@ layout: post
 title: "VPN-connected torrent server that is still accesible as a website or by SSH with local file sharing"
 date: 2017-08-28
 ---
+
 ###Using one Raspberry Pi for absolutely everything
 Following the guide in the Notes section I added VPNed torrent capability to the Pi3 that already does the SSH forwarding and speedtests.
 The speeds through the VPN were good and the guide configures it to have minimal chance of IP leaks. However, there still needs to be a way to get the files off the RPi once downloaded.
