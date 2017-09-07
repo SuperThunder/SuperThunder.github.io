@@ -3,6 +3,7 @@ layout: post
 title: "Adding an OpenVPN server to the home network"
 date: 2017-09-06
 ---
+
 ##Port forwarding properly and letting PiVPN do the rest
 ###(with DynDNS on the router)
 Using (PiVPN)[http://www.pivpn.io/] it's only a few button pushes and config details to set up a VPN on a RPi or Debian/Ubuntu server.
