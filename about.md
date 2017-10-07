@@ -8,7 +8,7 @@ I hope these posts are helpful :)
 
 ### More Information
 
-I do lots of projects. Some even get finished!
+I do lots of projects. Feel free to send me a message about any of them.
 
 ### Contact me
 

@@ -23,3 +23,5 @@ You'll also want to have pretty much the exact same library on each computer as 
 
 ### Notes
 I tried symlinking just the playlist file, but rhythmbox would overwrite the symlink with its own playlist information.
+
+It can be a bit tricky to get all the computers on the same page with regards to where to find the music files and getting all the playlists synced.
