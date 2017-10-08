@@ -28,12 +28,16 @@ There are a [lot of ways](https://stackoverflow.com/questions/13433903/convert-a
 - Use [man-to-github-pages](https://github.com/vbem/man-to-github-pages)
 - Use cat as the pager to man (`man -P cat`)
 - Cheat: Scrape the man pages already online on linux.die.net or man7.org/linux/man-pages/
+- Use the mandoc utility from BSD (which seems exactly right for this purpose, but is actually too NEW for my version of Ubuntu, as its first inclusion was in 17.04)
 
 ### man2html
 - There are two different fundamental man2html programs, both from around the early/mid 90s. One is a C program that is quite fast and does not rely on groff/troff, but has 'quirky internals'. The other is a Perl script that reads already formatted (by groff/troff/nroff) manpages and outputs them to pretty good HTML.
 - [This Unix stackexchange post has several very good posts on the topic](https://unix.stackexchange.com/questions/246888/how-do-i-convert-linux-man-pages-to-html-without-using-groff)
 - [A very good post by Thomas Dickey on the changes he made to Perl man2html](http://invisible-island.net/scripts/man2html.html)
 - [The page for VH-man2html, one of the original enhancements to C man2html](http://users.actrix.gen.nz/michael/vhman2html.html)
+
+### mandoc
+- Installing the .deb for mandoc from 17.04 worked fine on my 16.04.3 LTS system
 
 
 ## 2: The EPUB format
@@ -59,11 +63,23 @@ At this stage what we want to do is not tremendously complicated, so it is easy 
 ### ebooklib initial
 - The tutorial was easy to setup but expanding beyond it posed difficulties. Adding a second chapter in the same manner as the first resulted in that chapter being opened in a web browser (from within the ebook). Using ebooklib will require some understanding of both the epub I want to generate and the workings of ebooklib.
 - Using my test files (html and xhtml pages for Apache and Animate man pages), ebooklib's output had the odd inclusion of a lot of "\n" characters.
+- Replacing newlines and ', ' with nothing resulted in a much cleaner document with a tolerable amount of formatting oddities
 
 ### pypub initial
 - The tutorial is 5 lines of code! The abstractions in pypub make starting much easier.
 - Its output did not have the inclusion of all the "\n" characters. Pypub does say that its HTML/XHTML import functions try to sanitize the input, so I assume the newline characters are being sanitized out.
-- The main formatting problem is that the options sections (-D, -e, -A, etc with descriptions) was completely mangled into one paragraph. In ebooklib's version of the Apache docs the options displayed fine (except for all the '\n's that are in the whole document)
+- The main formatting problem is that the options sections (-D, -e, -A, etc with descriptions) was completely mangled into one paragraph. In ebooklib's version of the Apache docs the options displayed fine (except for all the '\n's and a few other weird instances of punctuation)
+
+
+
+## 5: Generation script
+
+
+
+## 6: The Manual
+
+
+
 
 
 
