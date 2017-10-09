@@ -171,6 +171,8 @@ The bash script takes about 2 minutes to run, and the Python script about 7 minu
 ## 6: The Manual (v1)
 The total size of all the HTML pages is about 107MB and the size of the eBook is 27MB so the .ZIP compression definitely makes a difference. As might be expected from an eBook with 100+MB of text, it takes a little while to load. Global searches through ALL the manpages are not instant but fast enough.
 
+("The Manual v1.epub" can be downloaded here)[https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/Man2eBook/The%20Manual%20v1.epub]
+
 There are some improvements that come immediately to mind:
 - The option of which sections should be written to the eBook (for example, only using everyday sections like 1,4,5,6, and 7)
 - Creating sections within the eBook for each manual section, under which each page is a chapter
