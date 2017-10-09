@@ -63,21 +63,119 @@ At this stage what we want to do is not tremendously complicated, so it is easy 
 ### ebooklib initial
 - The tutorial was easy to setup but expanding beyond it posed difficulties. Adding a second chapter in the same manner as the first resulted in that chapter being opened in a web browser (from within the ebook). Using ebooklib will require some understanding of both the epub I want to generate and the workings of ebooklib.
 - Using my test files (html and xhtml pages for Apache and Animate man pages), ebooklib's output had the odd inclusion of a lot of "\n" characters.
-- Replacing newlines and ', ' with nothing resulted in a much cleaner document with a tolerable amount of formatting oddities
+- Replacing \n and ', ' with nothing resulted in a much cleaner document with a tolerable amount of formatting oddities
 
 ### pypub initial
 - The tutorial is 5 lines of code! The abstractions in pypub make starting much easier.
 - Its output did not have the inclusion of all the "\n" characters. Pypub does say that its HTML/XHTML import functions try to sanitize the input, so I assume the newline characters are being sanitized out.
 - The main formatting problem is that the options sections (-D, -e, -A, etc with descriptions) was completely mangled into one paragraph. In ebooklib's version of the Apache docs the options displayed fine (except for all the '\n's and a few other weird instances of punctuation)
 
+### Picking a format
+After a few tests with various HTML sources and ebook viewers I got some decent output by taking the output of mandoc and making a chapter out of with pypub. It is not perfect but is quite readable. 
+So, the next step is to ramp up to doing that 8849 times.
 
 
-## 5: Generation script
+## 5: Generation scripts
+In not too much time I had scripts for generating all the HTML man pages, and then making an EPUB out of them.
+I kept the generation to a Bash script as all the commands were terminal commands and minimal text processing was required at that point. Once all the man pages have been generated as HTML or XHTML, the Python script can be run and will take every manpage and create a chapter in the EPUB for it.
+
+The bash script:
+
+    # have to clobber the field seperator or else the loop splits up the parameters
+    oldifs=$IFS; 
+    IFS=$(echo -en "\n\b");
+    # Have to call apropos with --long option to avoid name truncation
+    echo "Converting man pages to (X)HTML..."
+    for page in `apropos ".*" -l | cut -f "1,2" -d " " `; do
+        # strip out the parenthesis around the section number
+        page="${page//(}"; 
+        page="${page//)}";
+	    # swap the location of the name and section
+        pagename=`echo $page | cut -d " " -f 1`;
+        pagesection=`echo $page | cut -d " " -f 2`;
+        page=$pagesection" "$pagename;
+        # Get the location of the manpage then send it to mandoc
+	    # Unclobber the IFS so man can work
+	    IFS=$oldifs;
+	    #echo $page
+	    pagelocation=`man -w $page`;
+	    mandoc -Thtml $pagelocation | tidy -asxhtml 1>"All_ManPages_HTML/$page.xhtml" 2>/dev/null;
+	    IFS=$(echo -en "\n\b");
+    done
+    echo "Done!"
+
+    IFS=$OLDIFS
+
+The Python script:
+
+    import pypub
+
+    class HTML_Sources(object):
+	    def __init__(self, directory, extensions=["html", "xhtml"]):
+		    # pages will be stored in list as {[str]name: [str]content}
+		    self.HTML_Filenames = {}
+		    self.HTML_Pages = {}
+		    self._GetFilenames(directory, extensions)
+		    self._GetPages()
+	
+	    # Go into the provided directory and get all the files with the right extensions
+	    def _GetFilenames(self, directory, extensions):
+		    from os import listdir
+		    from os.path import isfile, join
+		    print("Directory: " + directory)
+		    directoryContents = [f for f in listdir(directory) if isfile(join(directory, f))]
+		    self.HTML_Filenames = { name:join(directory, name) for name in directoryContents if name.split('.')[::-1][0] in extensions }
+		    #print(self.HTML_Filenames)
+	
+	    # Take the list of filenames and read their content into the list of dicts
+	    def _GetPages(self):
+		    for filename in self.HTML_Filenames:
+			    #print filename
+			    self.HTML_Pages[ filename.split('.')[0] ] = str(open( self.HTML_Filenames[filename] ).readlines())
+		    #print(self.HTML_Pages)
+		    print("%d pages loaded"%len(self.HTML_Pages))
 
 
+    class TheManual(object):
+	    def __init__(self, verbose=True):
+		    # Gets us a sources object with all the filenames and their content
+		    self.Sources = HTML_Sources("All_ManPages_HTML")
+		
+		    # Set up the objects for the book
+		    self.Book_EPUB = pypub.Epub("The Manual v1")
+		
+		    # Make the ebook
+		    self.create_epub()
 
-## 6: The Manual
+		
+	    def create_epub(self):
+		    Book_Chapters = []
+		    for manpage in self.Sources.HTML_Pages:
+			    Title = manpage
+			    Content = self.Sources.HTML_Pages[Title].replace("\\n", "").replace("', '", "")
+			    Book_Chapter = pypub.create_chapter_from_string(Content, title=Title)
+			    self.Book_EPUB.add_chapter(Book_Chapter)
+			
+			    currentIndex = self.Sources.HTML_Pages.keys().index(manpage)
+			    if( currentIndex % 100 == 0 ):
+				    print("Done upto chapter: %d" %currentIndex )
+		
+		    self.Book_EPUB.create_epub("")
+		    print("Book created!")
+		
+	
+    TheManual()
 
+The bash script takes about 2 minutes to run, and the Python script about 7 minutes (with 8600 manpages to add as chapters). The process appears to be CPU-bound on an i5-5200U with a good SSD.
+
+## 6: The Manual (v1)
+The total size of all the HTML pages is about 107MB and the size of the eBook is 27MB so the .ZIP compression definitely makes a difference. As might be expected from an eBook with 100+MB of text, it takes a little while to load. Global searches through ALL the manpages are not instant but fast enough.
+
+There are some improvements that come immediately to mind:
+- The option of which sections should be written to the eBook (for example, only using everyday sections like 1,4,5,6, and 7)
+- Creating sections within the eBook for each manual section, under which each page is a chapter
+- Make the actual pages look better - the man style formatting means the section headers (NAME, SYNOPSIS, DESCRIPTION, etc) are quite massive compared to the page name and text
+- Sort the list of HTML pages by title before putting them into the book so that books of the same section and of similar title are next to each other
 
 
 
