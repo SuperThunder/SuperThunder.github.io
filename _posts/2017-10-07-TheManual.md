@@ -181,4 +181,9 @@ There are some improvements that come immediately to mind:
 - Creating sections within the eBook for each manual section, under which each page is a chapter
 - Make the actual pages look better - the man style formatting means the section headers (NAME, SYNOPSIS, DESCRIPTION, etc) are quite massive compared to the page name and text
 
+### First set of changes
+- Sort the pages alphabetically. The os.listdir module in Python does not perform any sorting, so the man pages were massively out of order
+- Implement the per-section control of which pages should be included. The biggest advantage of this is the potential smaller file size being more manageable for eBook readers.
+- Fix the bug that was causing every page to be encapsulated in [' '] (a result of using str() and not "".join() )
+
 
