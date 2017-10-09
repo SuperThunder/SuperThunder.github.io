@@ -110,6 +110,12 @@ The Python script:
 
     import pypub
 
+    # Shell commands to generate HTML pages:
+    # Get all the page names: apropos  "_*" -l
+    # (rearrange output to '# Name' format)
+    # man -w '# Name'
+    # mandoc -Thtml <manfile> > htmlfile.html
+
     class HTML_Sources(object):
 	    def __init__(self, directory, extensions=["html", "xhtml"]):
 		    # pages will be stored in list as {[str]name: [str]content}
@@ -131,7 +137,7 @@ The Python script:
 	    def _GetPages(self):
 		    for filename in self.HTML_Filenames:
 			    #print filename
-			    self.HTML_Pages[ filename.split('.')[0] ] = str(open( self.HTML_Filenames[filename] ).readlines())
+			    self.HTML_Pages[ filename.split('.')[0] ] = "".join(open( self.HTML_Filenames[filename] ).readlines())
 		    #print(self.HTML_Pages)
 		    print("%d pages loaded"%len(self.HTML_Pages))
 
@@ -150,13 +156,15 @@ The Python script:
 		
 	    def create_epub(self):
 		    Book_Chapters = []
-		    for manpage in self.Sources.HTML_Pages:
+		    Sorted_HTML_Pages = self.Sources.HTML_Pages.keys()
+		    Sorted_HTML_Pages.sort()
+		    for manpage in Sorted_HTML_Pages:
 			    Title = manpage
-			    Content = self.Sources.HTML_Pages[Title].replace("\\n", "").replace("', '", "")
+			    Content = self.Sources.HTML_Pages[Title].replace("\\n", "").replace("', '", " ")#.replace("['", '').replace("']", '')
 			    Book_Chapter = pypub.create_chapter_from_string(Content, title=Title)
 			    self.Book_EPUB.add_chapter(Book_Chapter)
 			
-			    currentIndex = self.Sources.HTML_Pages.keys().index(manpage)
+			    currentIndex = Sorted_HTML_Pages.index(manpage)
 			    if( currentIndex % 100 == 0 ):
 				    print("Done upto chapter: %d" %currentIndex )
 		
@@ -165,6 +173,7 @@ The Python script:
 		
 	
     TheManual()
+
 
 The bash script takes about 1 minute to run, and the Python script about 7 minutes (with 8600 manpages to add as chapters). The process appears to be CPU-bound on an i5-5200U with a good SSD.
 
@@ -177,9 +186,5 @@ There are some improvements that come immediately to mind:
 - The option of which sections should be written to the eBook (for example, only using everyday sections like 1,4,5,6, and 7)
 - Creating sections within the eBook for each manual section, under which each page is a chapter
 - Make the actual pages look better - the man style formatting means the section headers (NAME, SYNOPSIS, DESCRIPTION, etc) are quite massive compared to the page name and text
-- Sort the list of HTML pages by title before putting them into the book so that books of the same section and of similar title are next to each other
-
-
-
 
 
