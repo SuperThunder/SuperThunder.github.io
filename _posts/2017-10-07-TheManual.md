@@ -110,12 +110,6 @@ The Python script:
 
     import pypub
 
-    # Shell commands to generate HTML pages:
-    # Get all the page names: apropos  "_*" -l
-    # (rearrange output to '# Name' format)
-    # man -w '# Name'
-    # mandoc -Thtml <manfile> > htmlfile.html
-
     class HTML_Sources(object):
 	    def __init__(self, directory, extensions=["html", "xhtml"]):
 		    # pages will be stored in list as {[str]name: [str]content}
