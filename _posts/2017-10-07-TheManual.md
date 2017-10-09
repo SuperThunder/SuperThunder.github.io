@@ -99,7 +99,7 @@ The bash script:
 	    IFS=$oldifs;
 	    #echo $page
 	    pagelocation=`man -w $page`;
-	    mandoc -Thtml $pagelocation | tidy -asxhtml 1>"All_ManPages_HTML/$page.xhtml" 2>/dev/null;
+	    mandoc -Thtml $pagelocation | tidy -asxhtml 1>"All_ManPages_HTML/$page.html" 2>/dev/null;
 	    IFS=$(echo -en "\n\b");
     done
     echo "Done!"
@@ -166,7 +166,7 @@ The Python script:
 	
     TheManual()
 
-The bash script takes about 2 minutes to run, and the Python script about 7 minutes (with 8600 manpages to add as chapters). The process appears to be CPU-bound on an i5-5200U with a good SSD.
+The bash script takes about 1 minute to run, and the Python script about 7 minutes (with 8600 manpages to add as chapters). The process appears to be CPU-bound on an i5-5200U with a good SSD.
 
 ## 6: The Manual (v1)
 The total size of all the HTML pages is about 107MB and the size of the eBook is 27MB so the .ZIP compression definitely makes a difference. As might be expected from an eBook with 100+MB of text, it takes a little while to load. Global searches through ALL the manpages are not instant but fast enough.
