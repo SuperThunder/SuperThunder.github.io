@@ -46,7 +46,7 @@ There are a [lot of ways](https://stackoverflow.com/questions/13433903/convert-a
 - [This post from OpticalAuthoring has good and simple descriptions of all the key parts of the EPUB](https://www.opticalauthoring.com/inside-the-epub-format-the-basics/)
 - [This post on epubsecrets describes the EPUB standard and organization](http://epubsecrets.com/epub-the-language-of-ebooks-a-primer.php)
 
-So we need XHTML or at least to pretend our format is XHTML. I thought this would be an issue given that the converters stop at HTML, but in the early 2000s many websites wanted to move from HTML to XHTML so [there are good converters like 'tidy' available](https://www.princexml.com/forum/topic/8/using-html-tidy-to-convert-html-to-xhtml). [People report that even on HTML that is already close to XHTML to tool can still do a good job of tidying it up](https://www.linuxquestions.org/questions/linux-software-2/html-to-xhtml-conversion-275038/).
+So we need XHTML or at least to pretend our format is XHTML. I thought this would be an issue given that the converters stop at HTML, but in the early 2000s many websites wanted to move from HTML to XHTML so [there are good converters like 'tidy' available](https://www.princexml.com/forum/topic/8/using-html-tidy-to-convert-html-to-xhtml). [People report that even on HTML that is already close to XHTML the tool can still do a good job of tidying it up](https://www.linuxquestions.org/questions/linux-software-2/html-to-xhtml-conversion-275038/).
 
 
 ## 3: Making an EPUB in Python
@@ -174,14 +174,14 @@ The bash script takes about 1 minute to run, and the Python script about 7 minut
 ## 6: The Manual (v1)
 The total size of all the HTML pages is about 107MB and the size of the eBook is 27MB so the .ZIP compression definitely makes a difference. As might be expected from an eBook with 100+MB of text, it takes a little while to load. Global searches through ALL the manpages are not instant but fast enough.
 
-("The Manual v1.epub" can be downloaded here)[https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/Man2eBook/The%20Manual%20v1.epub]
+["The Manual v1.epub" can be downloaded here](https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/Man2eBook/The%20Manual%20v1.epub)
 
 There are some improvements that come immediately to mind:
 - The option of which sections should be written to the eBook (for example, only using everyday sections like 1,4,5,6, and 7)
 - Creating sections within the eBook for each manual section, under which each page is a chapter
 - Make the actual pages look better - the man style formatting means the section headers (NAME, SYNOPSIS, DESCRIPTION, etc) are quite massive compared to the page name and text
 
-### First set of changes
+### First set of changes (v1.1)
 - Sort the pages alphabetically. The os.listdir module in Python does not perform any sorting, so the man pages were massively out of order
 - Implement the per-section control of which pages should be included. The biggest advantage of this is the potential smaller file size being more manageable for eBook readers.
 - Fix the bug that was causing every page to be encapsulated in [' '] (a result of using str() and not "".join() )
