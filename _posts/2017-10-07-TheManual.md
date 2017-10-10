@@ -186,4 +186,8 @@ There are some improvements that come immediately to mind:
 - Implement the per-section control of which pages should be included. The biggest advantage of this is the potential smaller file size being more manageable for eBook readers.
 - Fix the bug that was causing every page to be encapsulated in [' '] (a result of using str() and not "".join() )
 
+A few more improvements come to mind
+- Profile the code to see if there are any obvious bottlenecks. The runtime is a little steep.
+- Create command line options so it can be used with options without having to go in and change the code
+- Allow for a list of which pages to use from the directory. This also allows for later features of making tailored manual ebook (most used pages, most useful for sysadmin, etc)
 
