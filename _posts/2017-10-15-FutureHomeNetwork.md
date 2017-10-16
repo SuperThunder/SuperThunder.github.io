@@ -13,7 +13,7 @@ The main issues are
 
 This is a diagram of the current setup:
 
-![Home Network](https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/NetworkDiagram_2017-10-15.png "Current Home Network (3 servers)")
+![Home Network](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/HomeNetwork/NetworkDiagram_2017-10-15.png "Current Home Network (3 servers)")
 
 ## Fixing the current setup
 - Add a DNS server at the Archer C7 (or even ISP modem/router) level. By controlling DNS we can also enforce certain levels of ad/malware blocking.
@@ -25,4 +25,4 @@ Since I now understand VMs and libvirt/KVM well enough to use them to deploy use
 ## The Future Setup
 This is a rough diagram of what the future setup will look like.
 
-![Future Home Network](https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/NetworkDiagramFuture_2017-10-15.png "Home Network after planned changes (2 or 3 servers)")
+![Future Home Network](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/HomeNetwork/NetworkDiagramFuture_2017-10-15.png "Home Network after planned changes (2 or 3 servers)")
