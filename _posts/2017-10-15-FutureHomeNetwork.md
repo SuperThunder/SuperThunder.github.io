@@ -12,6 +12,7 @@ The main issues are
 - The 600GiB dedicated file server is on the DLink network which is 100Mbit speed. While this shouldn't be an issue for Wifi-connected clients, it could slow down server-to-server transfers or slow down transfers if multiple wifi clients are accessing the file server at once.
 
 This is a diagram of the current setup:
+
 ![Home Network](https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/NetworkDiagram_2017-10-15.png "Current Home Network (3 servers)")
 
 ## Fixing the current setup
@@ -23,4 +24,5 @@ Since I now understand VMs and libvirt/KVM well enough to use them to deploy use
 
 ## The Future Setup
 This is a rough diagram of what the future setup will look like.
+
 ![Future Home Network](https://github.com/SuperThunder/SuperThunder.github.io/blob/master/content/HomeNetwork/NetworkDiagramFuture_2017-10-15.png "Home Network after planned changes (2 or 3 servers)")
