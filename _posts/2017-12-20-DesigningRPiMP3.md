@@ -7,7 +7,7 @@ date: 2017-12-20
 Walking my dogs, waiting for the bus, and walking home in the icy wastes of Canada can be quite boring when there is only the wind to listen to. I usually find trying to set up my phone for music or audiobooks results in frozen fingers.
  Additionally, even if the cold is not too bad, snow or rain can make touchscreens unusable.
 
-There are indeed many cheap MP3 players available, from $3 iPod shuffle look-alikes that seem to have a 50% chance of being DOA to $100 premium products that can also play movies and read ebooks. A huge number of reasonable devices in the $15-50 range copy the design of essentially every popular MP3 player of the last 15 years. What they lack is customizability (most are stuck with quite limited firmware), flashlights (this is important to me for dog*walking), wifi, and in some cases will suffer similar issues as phones in wet conditions.
+There are indeed many cheap MP3 players available, from $3 iPod shuffle look-alikes that seem to have a 50% chance of being DOA to $100 premium products that can also play movies and read ebooks. A huge number of reasonable devices in the $15-50 range copy the design of essentially every popular MP3 player of the last 15 years. What they lack is customizability (most are stuck with quite limited firmware), flashlights (this is important to me for dog-walking), wifi, and in some cases will suffer similar issues as phones in wet conditions.
 
 
 So, I can make a MP3 player that satisfies my very specific requirements and have fun along the way.
@@ -18,7 +18,7 @@ Using a SBC of some kind, likely a Raspberry Pi Zero or Raspberry Pi 3, an inter
 * Storage: The SD card in the Pi and/or attached USB flash drives
 * Display: 1.5 to 2 inch OLED (128x128 color, very clear) or TFT (320x240, still good). Cheap and easy to hook up to Arduino or RPi
 * 'Clickwheel': A rotary encoder with a fairly wide and grippy knob. Analog output. Good for scrolling through songs and adjusting volume.
-* Up/down/left/right: A game console style D*Pad or PSP style joystick are good candidates for this
+* Up/down/left/right: A game console style D-Pad or PSP style joystick are good candidates for this
 * Menu, select, back, etc buttons: Normal click buttons that are made for Arduino/Pi should work but it may be worth the hassle of using rubber dome buttons used in game consoles, game controllers, calculators, etc if they are nicer to use and potentially more waterproof.
 * Case: It is easy to buy replacement Gameboy and Gameboy Advance cases. The Gameboy case is sturdy, gives lots of room to work in, and already has a place for the screen and most buttons. It even has a hatch designed for the AAA batteries that would be used for access to USB ports or reset buttons. Designing something myself would involve getting cutting and fitting a sheet of flat plastic into a case, or using something sort of close to the right size and shape like a little plastic storage box.
 * Volume control: Not strictly necesarry, but easy to implement with either up/down buttons or a dedicated potentiometer volume knob.
