@@ -1,8 +1,8 @@
-***
+---
 layout: post
 title: "Planning a Raspberry Pi based MP3 Player"
 date: 2017-12-20
-***
+---
 ## Why?
 Walking my dogs, waiting for the bus, and walking home in the icy wastes of Canada can be quite boring when there is only the wind to listen to. I usually find trying to set up my phone for music or audiobooks results in frozen fingers.
  Additionally, even if the cold is not too bad, snow or rain can make touchscreens unusable.
