@@ -1,13 +1,13 @@
 ***
 layout: post
 title: "Planning a Raspberry Pi based MP3 Player"
-date: 2017*12*20
+date: 2017-12-20
 ***
 ## Why?
 Walking my dogs, waiting for the bus, and walking home in the icy wastes of Canada can be quite boring when there is only the wind to listen to. I usually find trying to set up my phone for music or audiobooks results in frozen fingers.
  Additionally, even if the cold is not too bad, snow or rain can make touchscreens unusable.
 
-There are indeed many cheap MP3 players available, from $3 iPod shuffle look*alikes that seem to have a 50% chance of being DOA to $100 premium products that can also play movies and read ebooks. A huge number of reasonable devices in the $15*50 range copy the design of essentially every popular MP3 player of the last 15 years. What they lack is customizability (most are stuck with quite limited firmware), flashlights (this is important to me for dog*walking), wifi, and in some cases will suffer similar issues as phones in wet conditions.
+There are indeed many cheap MP3 players available, from $3 iPod shuffle look-alikes that seem to have a 50% chance of being DOA to $100 premium products that can also play movies and read ebooks. A huge number of reasonable devices in the $15-50 range copy the design of essentially every popular MP3 player of the last 15 years. What they lack is customizability (most are stuck with quite limited firmware), flashlights (this is important to me for dog*walking), wifi, and in some cases will suffer similar issues as phones in wet conditions.
 
 
 So, I can make a MP3 player that satisfies my very specific requirements and have fun along the way.
