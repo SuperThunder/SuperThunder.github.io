@@ -20,13 +20,13 @@ Click the Ubuntu network icon (probably shown as the bars for Wi-Fi)
 
 -> Method: Choose shared to other computers
 
-**Note: if you want to give your main computer a network connection by ethernet later, you'll want to change the method back to Automatic (DHCP)**
+_*Note: if you want to give your main computer a network connection by ethernet later, you'll want to change the method back to Automatic (DHCP)*_
 
 Now open a terminal and type `ip a`.
 
 You should see something like 'eth0' or 'enp0s1' with an IP address like 10.0.40.1/24. Somewhere on that 253 IP range from 10.0.40.2 to 10.0.40.253, your attached Pi has been given an IP. I like to go the direct route on finding the assigned IP, so I use nmap.
 
-** be very careful about what you point nmap at! Corporations, governments, and even schools get quite angry if it looks like you're port scanning **
+_* be very careful about what you point nmap at! Corporations, governments, and even schools get quite angry if it looks like you're port scanning *_
 
 Run the equivalent of `nmap -n 10.0.40.1/24` for the network your main computer has created for the ethernet-attached headless computer. It should come back relatively quickly with 1 result, for your attached computer. Take down that IP, and now you can SSH or VNC in (as set up in the image for that distribution)!
 
