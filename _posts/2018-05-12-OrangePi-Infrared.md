@@ -11,7 +11,10 @@ This post is about what I did with the IR and the common 21 button IR remote tha
 
 [This gist](https://gist.github.com/steakknife/e419241095f1272ee60f5174f7759867) seems to be the exact same remote in terms of layout and hex codes.
 
+## Notes
 The following section is a lot of me making changes without restarting the relevant service. Skip to the end for the conclusion.
+
+Not written here is the fiddling with the files like /etc/lirc/hardware.conf to set the correct driver values.
 
 ## Testing Remote
 I was able to get a helpful stream of hex code, sequence count, and corresponding key as well as the config file involved by running `irw`.
