@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I hope these posts are helpful :)
+I write these posts to document some things I've done, and perhaps one day be the #1 search result for an obscure topic.
 
 ### More Information
 
