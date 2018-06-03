@@ -16,7 +16,7 @@ While nothing would be terrible to lose, it would be annoying. So in advance of 
 4. nginx config that provides access to some VMs.
 
 ## Steps
-1. Bring server down and take out drives, all 2.5 inch so their important content can be moved around with a USB-to-SATA adapter
+1. Bring server down and take out drives, all 2.5 inch, so their important content can be moved around with a USB-to-SATA adapter
 2. Install 2TB data, 500GB OS, 320GB VM drive (OS is on same disk as before, VMs will go on repurposed disk)
 3. Install Ubuntu server, set up SSH.
 4. This is where things get different. I want to have deployment automated in general, so I will use a tool (probably Ansible) at each step to automate deployment. The first step is to automate the samba setup.
@@ -31,7 +31,7 @@ In the end, I installed it in "erase everything" mode and then reinstalled with 
 
 Then, I had all the little usual tasks to do after installation:
 - Install openssh-server
-- Enable ufw (ubuntu firewall): `ufw enable`
+- Enable ufw (uncomplicated firewall): `ufw enable`
 - Allow ssh in ufw: `ufw allow ssh`
 - Install vim, htop, python pip, tmux
 - Use pip to install s-tui and Ansible
@@ -39,7 +39,7 @@ Then, I had all the little usual tasks to do after installation:
 - Configure samba
 - Allow samba in ufw
 - Install KVM (libvirt, qemu, etc)
-- Install nginx, allow it
+- Install nginx, allow it in ufw
 
 
 And some more one-off and context specific tasks:
@@ -50,7 +50,7 @@ And some more one-off and context specific tasks:
 
 As my goal is to have the server rebuildable by Ansible, I looked at many Ansible tutorials to find one that matched what I was doing. Most did not, they used cloud VMs and also for some reason tended to not state when they had just created a new file, and where they had put it. 
 
-I found ![this one](https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2) which was more reasonable and has some good explicit examples.
+I found !(https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2)[this one] which was more reasonable and has some good explicit examples.
 
 After some fiddling, I had a ansible-play folder with
 - local.yml
@@ -118,4 +118,23 @@ tasks/users.yml
       user: name=ansible uid=850
 
 
-In the future the ansible user should be setup so that there is no need for a manual sudo prompt
+
+In the future the ansible user should be setup so that there is no need for a manual sudo prompt, but this works reasonably for a one-time server setup sort of thing.
+
+At this stage samba still needs to be configured, the ufw rules need to be automated, and the VMs are not imported.
+
+    I did the ufw stuff with tasks/ufw-rules.yml:
+
+    - name: Enable ufw, for now default policy of allow
+      ufw:
+            state: enabled
+            policy: allow
+
+    - name: Run the ufw app commands for allowed services
+      command: sudo ufw allow '{{ item }}'
+      with_items:
+              - ssh
+              - samba
+              - Nginx Full
+
+The use of of 'command' instead of the ufw module for ansible is a bit hacky, but I couldn't see any ufw features to allow ufw named services.              
