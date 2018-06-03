@@ -24,4 +24,98 @@ While nothing would be terrible to lose, it would be annoying. So in advance of 
 6. Restore the VMs from backup. This is one-off enough that it might be a quick shell script. Includes restoring the network config and nginx config related to VMs.
 7. Import all the data from the previous storage
 
+## How it really went (part 1)
+Bringing down the server and swapping the drives was no problem. Neither was making an Ubuntu MATE 18.04 install USB with Etcher. However, the partioning was very stubborn as it refused to remove any partition that was claimed by LVM in any way.
 
+In the end, I installed it in "erase everything" mode and then reinstalled with the "something else" (choose your own partioning) mode.
+
+Then, I had all the little usual tasks to do after installation:
+- Install openssh-server
+- Enable ufw (ubuntu firewall): `ufw enable`
+- Allow ssh in ufw: `ufw allow ssh`
+- Install vim, htop, python pip, tmux
+- Use pip to install s-tui and Ansible
+- Install samba
+- Configure samba
+- Allow samba in ufw
+- Install KVM (libvirt, qemu, etc)
+- Install nginx, allow it
+
+
+And some more one-off and context specific tasks:
+- Make a new directory structure on the 2TB drive and copy things over
+    - Video, VM storage directories, backups, software, etc
+- Restore the VM images to their new location on the dedicated 320GB drive, then restore the network XML and VM XML
+- Setup the two data drives to mount in /etc/fstab
+
+As my goal is to have the server rebuildable by Ansible, I looked at many Ansible tutorials to find one that matched what I was doing. Most did not, they used cloud VMs and also for some reason tended to not state when they had just created a new file, and where they had put it. 
+
+I found ![this one](https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2) which was more reasonable and has some good explicit examples.
+
+After some fiddling, I had a ansible-play folder with
+- local.yml
+- ansible.cfg
+- hosts
+- tasks/ directory
+
+And a command of `ansible-playbook -i ./hosts local.yml --ask-sudo-pass -vv` that got the whole thing started.
+
+Ansible.cfg is simply
+
+    [defaults]
+    inventory = hosts
+
+hosts is a basic setup, mostly to point it back at the local server
+
+    [local]
+    127.0.0.1
+
+    [home]
+    192.168.x.b
+    192.168.x.a
+
+    [pi]
+    192.168.x.a
+
+    [server]
+    192.168.x.b
+
+local.yml currently installs some software and creates an ansible user
+
+    - hosts: localhost
+      become: true
+      pre_tasks:
+            - name: update repos
+              apt: update_cache=yes
+              changed_when: False
+
+      tasks:
+            - include: tasks/install-core.yml
+            - include: tasks/users.yml
+
+tasks/install-core.yml
+
+    - name: Install core programs
+      apt: 
+            name: "{{ item }}" 
+            state: present
+      with_items:
+            - htop
+            - tmux
+            - vim
+            - samba
+            - cifs-utils
+            - qemu-kvm
+            - libvirt-bin
+            - bridge-utils
+            - cpu-checker
+            - virtinst
+            - nginx
+
+tasks/users.yml
+
+    - name: create ansible user
+      user: name=ansible uid=850
+
+
+In the future the ansible user should be setup so that there is no need for a manual sudo prompt
