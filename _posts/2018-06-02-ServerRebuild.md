@@ -6,7 +6,7 @@ date: 2018-06-02
 ## Reason
 So when I built my home server for learning, testing, and some light usage as a NAS and VM host, I threw in 5 old laptop drives ranging from 250GB to 500GB. Some of them report questionable reliability in SMART, and most have poor IO performance.
 
-I bought a suitable 2TB drive to be able to amalgamate all of the storage (media, backups, VMs onto one high performance, modern, drive.
+I bought a suitable 2TB drive to be able to amalgamate all of the storage (media, backups, VMs) onto one high performancea and modern drive.
 
 ## Things to backup
 While nothing would be terrible to lose, it would be annoying. So in advance of changing anything, I prepared a list of things I should backup:
@@ -97,7 +97,7 @@ tasks/install-core.yml
 
     - name: Install core programs
       apt: 
-            name: "{{ item }}" 
+            name: "\{\{ item \}\}" 
             state: present
       with_items:
             - htop
@@ -123,7 +123,7 @@ In the future the ansible user should be setup so that there is no need for a ma
 
 At this stage samba still needs to be configured, the ufw rules need to be automated, and the VMs are not imported.
 
-    I did the ufw stuff with tasks/ufw-rules.yml:
+I did the ufw stuff with tasks/ufw-rules.yml:
 
     - name: Enable ufw, for now default policy of allow
       ufw:
@@ -137,4 +137,6 @@ At this stage samba still needs to be configured, the ufw rules need to be autom
               - samba
               - Nginx Full
 
-The use of of 'command' instead of the ufw module for ansible is a bit hacky, but I couldn't see any ufw features to allow ufw named services.              
+The use of of 'command' instead of the ufw module for Ansible is a bit hacky, but I couldn't see any ufw module features to allow ufw named services.
+
+
