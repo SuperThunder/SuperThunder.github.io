@@ -43,7 +43,7 @@ Changing this to the actual IP of the server resolved things.
 - It may have also been DNS, but it seems this quorum issue broke my ability to even add CIFS shares to the storage pool
 
 
-#### Update: I finally found [a relevant post on the forums](https://forum.proxmox.com/threads/properly-flush-cluster-settings-to-recreate-a-new-one.34772/) when the issue of Error 500 No Quorom came up again. Corosync.conf gets replaced with the contents of the file in the sqlite3 config database on restart, so the bad config set at installation will persist! It seems like the database record could simply be fixed, but the instructions above are to wipe the VM and corosync config. This did work for me, although I now have to readd my existing VMs from their qcow2 files.
+#### Update: I finally found [a relevant post on the forums](https://forum.proxmox.com/threads/properly-flush-cluster-settings-to-recreate-a-new-one.34772/) when the issue of Error 500 No Quorum came up again after a reboot. Corosync.conf gets replaced with the contents of the file in the sqlite3 config database on restart, so the bad config set at installation will persist! It seems like the database record could simply be fixed, but the instructions above are to wipe the VM and corosync config. This did work for me, although I now have to readd my existing VMs from their qcow2 files.
 
 ## Proxmox Is Really Cool
 Sorting all that out was completely worth it. Proxmox has so far exceeded my expectations in how close it gets to the spine-tingingly expensive vmware that I have seen in many environments.
