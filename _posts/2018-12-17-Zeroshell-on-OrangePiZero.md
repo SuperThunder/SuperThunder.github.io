@@ -60,7 +60,20 @@ Full router but not wireless AP
 - In Network->DNS you can configure all sorts of DNS-y options like master/slave zones, forwarders, and Dynamic DNS services.
 - Apparently Zeroshell has a Snort plugin. It didn't offer it to me in the package installation menu under Setup, so perhaps it's not available for ARM devices, or I don't have a necesarry subscription.
 
+![Subscription needed](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-no-subcription-message.png "Only security and bug fixes can be installed without a subscription")
+
+## Wifi, RADIUS, and the captive portal
+- To get wifi you will need to SSH in and enable it, after which the interface will appear under Setup->Network like the others.
+- I attempted setting up both an enterprise network with RADIUS and a normal WPA-PSK2 network. In both cases the wifi network was available, and I could attempt connection.
+- With the radius network I couldn't figure out how to make it authenticate clients. I thought I had created some credentials, but the logs showed 'no such user' type errors.
+- With the WPA-PSK2 network, clients got stuck at 'obtaining IP address' and the logs showed something or other about DHCP. I think the problem here was that it wasn't bridged to the LAN interface properly.
+
+![Wifi options](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-wifi-conf-menu.png "Easier to use than most desktop wifi software")
 
 ## SSH and Serial
 - Apparently if you have a serial interface, Zeroshell will let you log in over it. I didn't try it.
 - Over SSH, you get a nice menu system that also allows you to get a root shell.
+
+![SSH interface](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-ssh-interface.png "SSH inteface")
+
+![Resource use](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-top-output.png "Extremely lean")
