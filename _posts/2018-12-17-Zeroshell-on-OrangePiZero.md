@@ -60,7 +60,7 @@ Full router but not wireless AP
 - In Network->DNS you can configure all sorts of DNS-y options like master/slave zones, forwarders, and Dynamic DNS services.
 - Apparently Zeroshell has a Snort plugin. It didn't offer it to me in the package installation menu under Setup, so perhaps it's not available for ARM devices, or I don't have a necesarry subscription.
 
-![Subscription needed](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-no-subcription-message.png "Only security and bug fixes can be installed without a subscription")
+![Subscription needed](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-no-subscription-message.png "Only security and bug fixes can be installed without a subscription")
 
 ## Wifi, RADIUS, and the captive portal
 - To get wifi you will need to SSH in and enable it, after which the interface will appear under Setup->Network like the others.
@@ -74,6 +74,6 @@ Full router but not wireless AP
 - Apparently if you have a serial interface, Zeroshell will let you log in over it. I didn't try it.
 - Over SSH, you get a nice menu system that also allows you to get a root shell.
 
-![SSH interface](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-ssh-interface.png "SSH inteface")
+![SSH interface](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-ssh-interface.png "SSH interface")
 
 ![Resource use](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/zeroshell-top-output.png "Extremely lean")
