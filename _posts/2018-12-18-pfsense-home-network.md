@@ -40,14 +40,14 @@ Suricata lets us gets alerts (and even block IPs) based on rulesets like Emergin
 
 For Suricata, I enabled the free community rules (EmergingThreats and Snort). Here's what some alerts look like:
 
-![SuricataAlerts](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/suricata-retransmissions-alerts.png "Suricata certainly gets excited about things")
+![SuricataAlerts](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/suricata-retransmissions-alert.png "Suricata certainly gets excited about things")
 
 
 For nTop, I turned pretty much every monitor it has on but left the parameters at default. Here's some of the monitors:
 
 ![nTop-activeflows](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/ntop-activeflows-1.png "Active flows")
 
-![nTop-applicatonprotocols](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/ntop-applicaton-protocols.png "Application protocols")
+![nTop-applicatonprotocols](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/ntop-application-protocols.png "Application protocols")
 
 ![nTop-flow](https://raw.githubusercontent.com/SuperThunder/SuperThunder.github.io/master/content/Screenshots/ntop-flow-1.png "Flow Talker diagram")
 
