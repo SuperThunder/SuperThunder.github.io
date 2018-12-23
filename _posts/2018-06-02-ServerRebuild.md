@@ -50,7 +50,7 @@ And some more one-off and context specific tasks:
 
 As my goal is to have the server rebuildable by Ansible, I looked at many Ansible tutorials to find one that matched what I was doing. Most did not, they used cloud VMs and also for some reason tended to not state when they had just created a new file, and where they had put it. 
 
-I found !(https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2)[this one] which was more reasonable and has some good explicit examples.
+I found [https://opensource.com/article/18/3/manage-your-workstation-configuration-ansible-part-2](this one) which was more reasonable and has some good explicit examples.
 
 After some fiddling, I had a ansible-play folder with
 - local.yml

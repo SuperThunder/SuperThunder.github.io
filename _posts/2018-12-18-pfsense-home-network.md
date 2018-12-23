@@ -32,7 +32,7 @@ So far performance has been great. I don't think I've seen the CPU go above 15% 
 
 Laptops do generally lack dual NICs or the capacity to get one, but the USB gigabit NIC seems to be working fine. Perhaps it couldn't sustain true gigabit speeds, but in Canada I don't think we're going to get gigabit speeds in most homes for a very long time.
 
-I think a virtual pfsense could also make sense, but then I'd either need another USB NIC and pass both through (or a PCIe one, but those are more expensive), or have all the VMs and all wifi traffic going through the one internal gigabit interface of my VM server. High load on some of the VMs, if it created vCPU contention, could slow down the internet for every device. However, I think I will eventually do virtual pfsense, because having everything running off one VM host is very cool, and is the kind of thing you can recommend to friends or small businesses.
+I think a virtual pfsense could also make sense, but then I'd either need another USB NIC and pass both through (or a PCIe one, but those are more expensive), or have all the VMs and all wifi traffic going through the one internal gigabit interface of my VM server. High load on some of the VMs, if it created vCPU contention, could slow down the internet for every device. However, I think I will eventually do virtual pfsense, because having everything running off one VM host is very cool. Everything on one VM host is also the kind of thing you can recommend to technical friends or small businesses that have a big need for savings and only a moderate need for total reliability.
 
 
 ## Suricata and nTopng
